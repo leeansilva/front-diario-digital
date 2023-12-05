@@ -1,5 +1,6 @@
 import { Providers } from "@/chakra/Providers";
 import SideBarWithHeader from "./components/SideBar/SideBarWithHeader";
+import { UserProvider } from "./contexts/UserContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,8 +12,10 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body>
         <Providers>
+        <UserProvider>
           <SideBarWithHeader />
           {children}
+        </UserProvider>
         </Providers>
       </body>
     </html>

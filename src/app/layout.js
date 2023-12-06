@@ -1,6 +1,7 @@
 import { Providers } from "@/chakra/Providers";
 import SideBarWithHeader from "./components/SideBar/SideBarWithHeader";
 import { UserProvider } from "./contexts/UserContext";
+import { Box } from "@chakra-ui/react";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,10 +13,12 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body>
         <Providers>
-        <UserProvider>
-          <SideBarWithHeader />
-          {children}
-        </UserProvider>
+          <UserProvider>
+            <SideBarWithHeader />
+            <Box ml={{base:'0px', md:'240px'}}>
+              {children}
+            </Box>
+          </UserProvider>
         </Providers>
       </body>
     </html>

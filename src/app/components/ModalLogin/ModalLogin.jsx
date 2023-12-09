@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 export default function ModalLogin() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { user,login } = React.useContext(UserContext);
+  const { user,login, loading } = React.useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,7 +14,6 @@ export default function ModalLogin() {
 
   const handleSubbmit = ()=>{
     login(username,password)
-    onClose()
   }
   return (
     <>
@@ -38,12 +37,12 @@ export default function ModalLogin() {
 
             <FormControl mt={4}>
               <FormLabel>Contraseña</FormLabel>
-              <Input  value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='12345' />
+              <Input type='password'  value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='12345' />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={handleSubbmit} colorScheme='blue' mr={3}>
+            <Button isLoading={loading} onClick={handleSubbmit} colorScheme='blue' mr={3}>
               Iniciar
             </Button>
             <Button onClick={onClose}>Cancelar</Button>
